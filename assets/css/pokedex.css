@@ -154,26 +154,34 @@
     margin-left: .635rem;
 }
 
-.detailed nav {
-    display: inline;
-}
-
-.detailed button {
-    padding: .25rem .5rem;
-    margin: .25rem 0;
-    font-size: .850rem;
-    color: #fff;
-    background-color: #969696;
-    border: none;
-    border-radius: 1rem;
-}
-
 .detailedView {
     background-color: aliceblue;
-    border: solid black 2px;
+    border: solid rgb(242, 242, 242) 2px;
         border-radius: 1rem;
     margin: auto;
     height: 50vh;
+}
+
+.detailedView .pokemon {
+    height: 50%;
+}
+
+.detailedView .pokemon .number {
+    font-size: 1rem;
+}
+
+.detailedView .pokemon .name {
+    font-size: 1.325rem;
+}
+
+.detailedView li {
+    color: #fff;
+    font-size: .625rem;
+    filter: brightness(1.1);
+    text-align: center;
+    padding: .385rem;
+    width: 25%;
+    margin: .2rem;
 }
 
 @media screen and (min-width: 380px) {

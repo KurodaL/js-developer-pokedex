@@ -7,6 +7,7 @@ const viewMoreButton = document.getElementById('viewMoreButton')
 const maxRecords = 151
 const limit = 10
 let offset = 0;
+let number = 1;
 
 function toggleDeloadButtonVisibility() {
     if (offset == 0) {
@@ -34,17 +35,14 @@ function convertPokemonToLi(pokemon) {
     `
 }
 
-function pokemonDetailedView(pokemon) {
-    retunr `
-        
-    `
+function pokemonDetailedView() {
+    console.log(number)
 }
 
 function detailedView() {
+    loadPokemonDetails()
     console.log('sexo')
 }
-
-
 
 function convertPokemonDetails(pokemon) {
     return `
@@ -58,6 +56,17 @@ function loadPokemonItens(offset, limit) {
         pokemonList.innerHTML += newHtml
     })
 }
+
+function loadPokemonDetails(pokemonId) {
+    pokeApi.getPokemonDetails(pokemonId).then((pokemon) => {
+        const pokemonDetailsHtml = convertPokemonDetails(pokemon);
+        // Exibir os detalhes do Pokémon em um elemento no DOM
+        // Por exemplo, você pode ter um elemento <div> com id 'pokemonDetails'
+        const pokemonDetailsContainer = document.getElementById('pokemonDetails');
+        pokemonDetailsContainer.innerHTML = pokemonDetailsHtml;
+    });
+}
+
 
 loadPokemonItens(offset, limit)
 toggleDeloadButtonVisibility()
