@@ -18,7 +18,7 @@ function toggleDeloadButtonVisibility() {
 
 function convertPokemonToLi(pokemon) {
     return `
-        <li class="pokemon ${pokemon.type}">
+        <li onclick="detailedView()" class="pokemon ${pokemon.type}">
             <span class="number">#${pokemon.number}</span>
             <span class="name">${pokemon.name}</span>
 
@@ -34,6 +34,18 @@ function convertPokemonToLi(pokemon) {
     `
 }
 
+function pokemonDetailedView(pokemon) {
+    retunr `
+        
+    `
+}
+
+function detailedView() {
+    console.log('sexo')
+}
+
+
+
 function convertPokemonDetails(pokemon) {
     return `
         
@@ -45,14 +57,6 @@ function loadPokemonItens(offset, limit) {
         const newHtml = pokemons.map(convertPokemonToLi).join('')
         pokemonList.innerHTML += newHtml
     })
-}
-
-function loadPokemonDetail () {
-    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
-        const newHtml = pokemons.map(convertPokemonToLi).join('')
-        teste.innerHTML += newHtml
-    })
-    console.log('teste')
 }
 
 loadPokemonItens(offset, limit)
@@ -75,21 +79,5 @@ loadMoreButton.addEventListener('click', () => {
 })
 
 deloadButton.addEventListener('click', () => {
-    offset -= limit
-    const qtdRecordsWithNexPage = offset + limit
-
-    if (qtdRecordsWithNexPage >= maxRecords) {
-        const newLimit = maxRecords - offset
-        loadPokemonItens(offset, newLimit)
-
-        deloadButton.parentElement.removeChild(deloadButton)
-    } else {
-        loadPokemonItens(offset, limit)
-    }
-
-    toggleDeloadButtonVisibility()
-})
-
-viewMoreButton.addEventListener('click', () => {
-    loadPokemonDetail()
+    location.reload()
 })
